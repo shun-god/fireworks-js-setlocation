@@ -2,8 +2,8 @@ import type { Options } from './options.js'
 
 export class Mouse {
   active = false
-  x: number
-  y: number
+  x = 0
+  y = 0
 
   constructor(
     private readonly options: Options,

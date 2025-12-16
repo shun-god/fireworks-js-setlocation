@@ -1,5 +1,5 @@
 import { Explosion } from './explosion.js'
-import { floor, randomFloat, randomInt } from './helpers.js'
+import { floor, getDistance, randomFloat, randomInt } from './helpers.js'
 import { Mouse } from './mouse.js'
 import { Options } from './options.js'
 import { RequestAnimationFrame } from './raf.js'
@@ -201,21 +201,59 @@ export class Fireworks {
       traceLength,
       traceSpeed,
       acceleration,
-      mouse
+      mouse,
+      launchAngle,
+      burstDistance,
+      target
     } = this.opts
+
+    const startX =
+      (this.width * randomInt(rocketsPoint.min, rocketsPoint.max)) / 100
+    const startY = this.height
+
+    const fallbackTargetX = randomInt(
+      boundaries.x,
+      boundaries.width - boundaries.x * 2
+    )
+    const fallbackTargetY = randomInt(boundaries.y, boundaries.height * 0.5)
+
+    const mouseAvailable =
+      this.mouse.active ||
+      (mouse.move &&
+        Number.isFinite(this.mouse.x) &&
+        Number.isFinite(this.mouse.y))
+
+    const angleDeg = this.resolveAngle(launchAngle)
+    const distance =
+      burstDistance ?? getDistance(startX, startY, fallbackTargetX, fallbackTargetY)
+
+    let dx = fallbackTargetX
+    let dy = fallbackTargetY
+
+    if (mouseAvailable) {
+      dx = this.mouse.x
+      dy = this.mouse.y
+    } else if (target?.enabled) {
+      dx = target.x
+      dy = target.y
+    } else if (angleDeg !== null || burstDistance !== null) {
+      const direction =
+        angleDeg !== null
+          ? this.directionFromAngle(angleDeg)
+          : this.normalizeDirection(startX, startY, fallbackTargetX, fallbackTargetY)
+
+      dx = startX + direction.x * distance
+      dy = startY + direction.y * distance
+    }
+
+    const clampedTarget = this.clampTarget(dx, dy, boundaries)
 
     this.traces.push(
       new Trace({
-        x: (this.width * randomInt(rocketsPoint.min, rocketsPoint.max)) / 100,
-        y: this.height,
-        dx:
-          (this.mouse.x && mouse.move) || this.mouse.active
-            ? this.mouse.x
-            : randomInt(boundaries.x, boundaries.width - boundaries.x * 2),
-        dy:
-          (this.mouse.y && mouse.move) || this.mouse.active
-            ? this.mouse.y
-            : randomInt(boundaries.y, boundaries.height * 0.5),
+        x: startX,
+        y: startY,
+        dx: clampedTarget.x,
+        dy: clampedTarget.y,
         ctx: this.ctx,
         hue: randomInt(hue.min, hue.max),
         speed: traceSpeed,
@@ -292,6 +330,65 @@ export class Fireworks {
       this.explosions[length]!.update(() => {
         this.explosions.splice(length, 1)
       })
+    }
+  }
+
+  private resolveAngle(angle: FireworksTypes.Angle | null | undefined): number | null {
+    if (angle === null || angle === undefined) {
+      return null
+    }
+
+    if (angle === 'random') {
+      return randomFloat(0, 180)
+    }
+
+    if (typeof angle === 'number') {
+      return angle
+    }
+
+    return randomFloat(angle.min, angle.max)
+  }
+
+  private directionFromAngle(angleDeg: number): { x: number; y: number } {
+    const rad = (angleDeg * Math.PI) / 180
+
+    return {
+      x: Math.cos(rad),
+      y: -Math.sin(rad)
+    }
+  }
+
+  private normalizeDirection(
+    sx: number,
+    sy: number,
+    dx: number,
+    dy: number
+  ): { x: number; y: number } {
+    const distance = getDistance(sx, sy, dx, dy)
+
+    if (!distance) {
+      return { x: 0, y: -1 }
+    }
+
+    return {
+      x: (dx - sx) / distance,
+      y: (dy - sy) / distance
+    }
+  }
+
+  private clampTarget(
+    x: number,
+    y: number,
+    boundaries: FireworksTypes.Boundaries
+  ): FireworksTypes.Point {
+    const maxX =
+      boundaries.width > 0 ? boundaries.width - boundaries.x : this.width
+    const maxY =
+      boundaries.height > 0 ? boundaries.height - boundaries.y : this.height
+
+    return {
+      x: Math.min(Math.max(x, boundaries.x), maxX),
+      y: Math.min(Math.max(y, boundaries.y), maxY)
     }
   }
 }

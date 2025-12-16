@@ -4,6 +4,9 @@ import type { FireworksOptions, FireworksTypes } from './types.js'
 export class Options implements FireworksTypes.Options {
   hue: FireworksTypes.MinMax
   rocketsPoint: FireworksTypes.MinMax
+  launchAngle: FireworksTypes.Angle | null
+  burstDistance: number | null
+  target: FireworksTypes.Target | null
   opacity: number
   acceleration: number
   friction: number
@@ -46,6 +49,14 @@ export class Options implements FireworksTypes.Options {
     this.rocketsPoint = {
       min: 50,
       max: 50
+    }
+
+    this.launchAngle = null
+    this.burstDistance = null
+    this.target = {
+      enabled: false,
+      x: 0,
+      y: 0
     }
 
     this.lineWidth = {
