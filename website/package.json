@@ -11,7 +11,7 @@
     "@r3-dev/brand": "1.2.0",
     "@tweakpane/core": "2.0.4",
     "@tweakpane/plugin-essentials": "0.2.1",
-    "fireworks-js": "workspace:*",
+    "@shun_god/fireworks-js-setlocation": "workspace:*",
     "tweakpane": "4.0.4"
   }
 }

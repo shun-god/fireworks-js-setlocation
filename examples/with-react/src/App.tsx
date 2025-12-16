@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import { Fireworks } from '@fireworks-js/react'
-import type { FireworksHandlers } from '@fireworks-js/react'
+import { Fireworks } from '@shun_god/fireworks-js-setlocation-react'
+import type { FireworksHandlers } from '@shun_god/fireworks-js-setlocation-react'
 
 export function App() {
   const ref = useRef<FireworksHandlers>(null)

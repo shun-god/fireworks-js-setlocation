@@ -1,5 +1,5 @@
 import { el } from '@zero-dependency/dom'
-import { Fireworks } from 'fireworks-js'
+import { Fireworks } from '@shun_god/fireworks-js-setlocation'
 
 import './style.css'
 

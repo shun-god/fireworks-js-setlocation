@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@zero-dependency/dom": "^1.8.4",
-    "fireworks-js": "workspace:*"
+    "@shun_god/fireworks-js-setlocation": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.5.3"
