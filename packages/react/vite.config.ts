@@ -1,8 +1,9 @@
-import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
+import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import banner from 'vite-plugin-banner'
 import dts from 'vite-plugin-dts'
+
 import { author, homepage, license, name, version } from './package.json'
 
 export default defineConfig({

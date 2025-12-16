@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import banner from 'vite-plugin-banner'
 import dts from 'vite-plugin-dts'
 import solid from 'vite-plugin-solid'
+
 import { author, homepage, license, name, version } from './package.json'
 
 export default defineConfig({

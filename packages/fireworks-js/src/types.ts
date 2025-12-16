@@ -4,6 +4,9 @@ export namespace FireworksTypes {
   export interface Options {
     hue: MinMax
     rocketsPoint: MinMax
+    launchAngle: Angle | null
+    burstDistance: number | null
+    target: Target | null
     opacity: number
     acceleration: number
     friction: number
@@ -26,6 +29,17 @@ export namespace FireworksTypes {
   }
 
   export type LineStyle = 'round' | 'square'
+
+  export type Angle = number | MinMax | 'random'
+
+  export interface Point {
+    x: number
+    y: number
+  }
+
+  export interface Target extends Point {
+    enabled: boolean
+  }
 
   export interface Mouse {
     click: boolean
@@ -112,6 +126,6 @@ export type RecursivePartial<T> = {
   [P in keyof T]?: T[P] extends (infer U)[]
     ? RecursivePartial<U>[]
     : T[P] extends object
-    ? RecursivePartial<T[P]>
-    : T[P]
+      ? RecursivePartial<T[P]>
+      : T[P]
 }

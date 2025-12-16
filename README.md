@@ -1,3 +1,27 @@
+既存の状態だと、花火の炸裂位置を指定できなかったため、指定できるようなオプションを追加した
+
+## 新オプション概要
+- 発射角を度数で指定する `launchAngle` を追加（右向き0度、上方向90度）。`number` / `{ min, max }` / `'random'` を受け付け。
+- 炸裂までの距離を指定する `burstDistance` を追加（px）。速度オプションと組み合わせて到達タイミングが決まる。
+- 座標指定ターゲット `target` を追加（`{ enabled, x, y }`）。有効化するとマウスより低優先度、角度/距離より高優先度で炸裂位置を固定。
+- 優先順位: マウス（`mouse.click` / `mouse.move` で active） > `target.enabled` が true > `launchAngle` / `burstDistance` > 従来ランダム。
+
+### 例: React ラッパー
+```tsx
+import { Fireworks } from '@fireworks-js/react'
+
+<Fireworks
+  options={{
+    launchAngle: { min: 60, max: 120 },
+    burstDistance: 500,
+    mouse: { click: true, move: false, max: 1 },
+    target: { enabled: true, x: 200, y: 150 }
+  }}
+/>
+```
+
+以下↓既存README
+
 [![](https://fireworks.js.org/images/fireworks_banner.gif)](https://fireworks.js.org)
 
 <p align="center">
