@@ -225,7 +225,8 @@ export class Fireworks {
 
     const angleDeg = this.resolveAngle(launchAngle)
     const distance =
-      burstDistance ?? getDistance(startX, startY, fallbackTargetX, fallbackTargetY)
+      burstDistance ??
+      getDistance(startX, startY, fallbackTargetX, fallbackTargetY)
 
     let dx = fallbackTargetX
     let dy = fallbackTargetY
@@ -240,7 +241,12 @@ export class Fireworks {
       const direction =
         angleDeg !== null
           ? this.directionFromAngle(angleDeg)
-          : this.normalizeDirection(startX, startY, fallbackTargetX, fallbackTargetY)
+          : this.normalizeDirection(
+              startX,
+              startY,
+              fallbackTargetX,
+              fallbackTargetY
+            )
 
       dx = startX + direction.x * distance
       dy = startY + direction.y * distance
@@ -333,7 +339,9 @@ export class Fireworks {
     }
   }
 
-  private resolveAngle(angle: FireworksTypes.Angle | null | undefined): number | null {
+  private resolveAngle(
+    angle: FireworksTypes.Angle | null | undefined
+  ): number | null {
     if (angle === null || angle === undefined) {
       return null
     }

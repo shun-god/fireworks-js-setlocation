@@ -1,13 +1,15 @@
 import * as EssentialsPlugin from '@tweakpane/plugin-essentials'
 import { Fireworks } from 'fireworks-js'
 import { Pane } from 'tweakpane'
+import type { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph'
+
 import {
   backgroundConfig,
   fireworksContainer,
   fireworksOptions,
   mainContainer
 } from './config.js'
-import type { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph'
+
 import '@r3-dev/brand'
 
 declare global {
@@ -192,9 +194,11 @@ const background = tweakpane.addFolder({
   expanded: false
 })
 
-background.addBinding(backgroundConfig, 'container').on('change', ({ value }) => {
-  mainContainer.style.display = value ? 'none' : 'block'
-})
+background
+  .addBinding(backgroundConfig, 'container')
+  .on('change', ({ value }) => {
+    mainContainer.style.display = value ? 'none' : 'block'
+  })
 
 background.addBinding(backgroundConfig, 'color').on('change', ({ value }) => {
   fireworksContainer.style.backgroundColor = value
@@ -208,9 +212,11 @@ background.addBinding(backgroundConfig, 'size').on('change', ({ value }) => {
   fireworksContainer.style.backgroundSize = value
 })
 
-background.addBinding(backgroundConfig, 'position').on('change', ({ value }) => {
-  fireworksContainer.style.backgroundPosition = value
-})
+background
+  .addBinding(backgroundConfig, 'position')
+  .on('change', ({ value }) => {
+    fireworksContainer.style.backgroundPosition = value
+  })
 
 background.addBinding(backgroundConfig, 'repeat').on('change', ({ value }) => {
   fireworksContainer.style.backgroundRepeat = value

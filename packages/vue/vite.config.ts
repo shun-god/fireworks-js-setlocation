@@ -1,7 +1,8 @@
-import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import banner from 'vite-plugin-banner'
+
 import { author, homepage, license, name, version } from './package.json'
 
 export default defineConfig({
@@ -13,8 +14,7 @@ export default defineConfig({
         `\n * author: ${author.name} (${author.url})` +
         `\n * homepage: ${homepage}` +
         `\n * license ${license}\n */`
-    )
-  ],
+    )],
   build: {
     target: 'esnext',
     lib: {
