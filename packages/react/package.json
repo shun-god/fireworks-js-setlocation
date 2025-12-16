@@ -1,5 +1,5 @@
 {
-  "name": "@fireworks-js/react",
+  "name": "@fireworks-js-setlocation/react",
   "version": "2.10.8",
   "type": "module",
   "description": "A simple fireworks library!",
@@ -33,6 +33,9 @@
     "url": "https://crashmax.ru"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/crashmax-dev/fireworks-js/issues"
   },
@@ -42,7 +45,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.10.8"
+    "@fireworks-js-setlocation/fireworks-js": "workspace:2.10.8"
   },
   "devDependencies": {
     "@types/react": "18.3.3",

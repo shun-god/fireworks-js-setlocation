@@ -1,5 +1,5 @@
 {
-  "name": "fireworks-js",
+  "name": "@fireworks-js-setlocation/fireworks-js",
   "version": "2.10.8",
   "type": "module",
   "description": "A simple fireworks library!",
@@ -32,6 +32,9 @@
     "url": "https://crashmax.ru"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/crashmax-dev/fireworks-js/issues"
   },
