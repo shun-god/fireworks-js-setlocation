@@ -33,12 +33,12 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
-      external: ['react', 'fireworks-js'],
+      external: ['react', '@shun_god/fireworks-js-setlocation'],
       output: {
         exports: 'named',
         globals: {
           react: 'React',
-          'fireworks-js': 'Fireworks'
+          '@shun_god/fireworks-js-setlocation': 'Fireworks'
         }
       }
     }

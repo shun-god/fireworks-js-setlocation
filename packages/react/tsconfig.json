@@ -3,7 +3,12 @@
   "compilerOptions": {
     "types": [
       "vite/client"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@shun_god/fireworks-js-setlocation": ["../fireworks-js/src"],
+      "@shun_god/fireworks-js-setlocation/*": ["../fireworks-js/src/*"]
+    }
   },
   "include": [
     "src"

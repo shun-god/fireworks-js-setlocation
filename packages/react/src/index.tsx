@@ -1,6 +1,11 @@
 import React, { useEffect, useImperativeHandle, useRef } from 'react'
-import { Fireworks as FireworksJs } from 'fireworks-js'
-import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
+import { Fireworks as FireworksJs } from '@shun_god/fireworks-js-setlocation'
+import type { FireworksHandlers, FireworksOptions } from '@shun_god/fireworks-js-setlocation'
+
+type LaunchCount = Parameters<FireworksJs['launch']>[0]
+type SizeArgs = Parameters<FireworksJs['updateSize']>[0]
+type BoundariesArgs = Parameters<FireworksJs['updateBoundaries']>[0]
+type OptionsArgs = Parameters<FireworksJs['updateOptions']>[0]
 
 interface FireworksProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode
@@ -23,7 +28,7 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
       start() {
         fireworks.current!.start()
       },
-      launch(count) {
+      launch(count?: LaunchCount) {
         fireworks.current!.launch(count)
       },
       stop() {
@@ -38,13 +43,13 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
       clear() {
         fireworks.current!.clear()
       },
-      updateOptions(options) {
+      updateOptions(options: OptionsArgs) {
         fireworks.current!.updateOptions(options)
       },
-      updateSize(size) {
+      updateSize(size: SizeArgs) {
         fireworks.current!.updateSize(size)
       },
-      updateBoundaries(boundaries) {
+      updateBoundaries(boundaries: BoundariesArgs) {
         fireworks.current!.updateBoundaries(boundaries)
       }
     }))

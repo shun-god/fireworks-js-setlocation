@@ -1,6 +1,6 @@
 {
-  "name": "@shun_god/react",
-  "version": "2.10.8",
+  "name": "@shun_god/fireworks-js-setlocation-react",
+  "version": "2.11.0",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -45,7 +45,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@shun_god/fireworks-js-setlocation": "workspace:2.10.8"
+    "@shun_god/fireworks-js-setlocation": "2.11.0"
   },
   "devDependencies": {
     "@types/react": "18.3.3",
