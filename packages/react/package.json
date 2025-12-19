@@ -3,6 +3,7 @@
   "version": "2.11.1",
   "type": "module",
   "description": "A simple fireworks library!のフォーク",
+  "homepage": "",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.cjs.js",
   "jsdelivr": "./dist/index.umd.js",
@@ -43,7 +44,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@shun_god/fireworks-js-setlocation": "^2.11.0"
+    "@shun_god/fireworks-js-setlocation": "^2.11.1"
   },
   "devDependencies": {
     "@types/react": "18.3.3",
