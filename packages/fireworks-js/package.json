@@ -1,9 +1,8 @@
 {
   "name": "@shun_god/fireworks-js-setlocation",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "type": "module",
-  "description": "A simple fireworks library!",
-  "homepage": "https://fireworks.js.org",
+  "description": "A simple fireworks library!のフォーク",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.cjs.js",
   "jsdelivr": "./dist/index.umd.js",
@@ -19,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crashmax-dev/fireworks-js.git"
+    "url": "git+https://github.com/shun-god/fireworks-js-setlocation.git"
   },
   "keywords": [
     "canvas",
@@ -27,16 +26,15 @@
     "animation"
   ],
   "author": {
-    "name": "Vitalij Ryndin",
-    "email": "sys@crashmax.ru",
-    "url": "https://crashmax.ru"
+    "name": "shun-god",
+    "url": "https://github.com/shun-god"
   },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/crashmax-dev/fireworks-js/issues"
+    "url": "https://github.com/shun-god/fireworks-js-setlocation/issues"
   },
   "scripts": {
     "dev": "vite build --watch",
